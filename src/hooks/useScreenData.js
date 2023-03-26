@@ -7,12 +7,22 @@ const ageMockData = [
   { startValue: 0, value: 44, axis: '>50', color: 'rgba(251,253,142)' },
 ]
 
+const deviceMockData = {
+  totalDevices: 1070909,
+  devices: [
+    { value: 423676, key: 'Android' },
+    { value: 373581, key: 'IOS' },
+    { value: 273652, key: 'PC' },
+  ],
+}
+
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
   const growthLastMonth = ref(15)
   const ageRangeData = ref(ageMockData)
   const averageAge = ref(0)
+  const deviceData = ref(deviceMockData)
 
   let task
   onMounted(() => {
@@ -29,5 +39,6 @@ export default function () {
     growthLastMonth,
     ageRangeData,
     averageAge,
+    deviceData,
   }
 }

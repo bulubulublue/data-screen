@@ -8,7 +8,9 @@
     <div class="chart-container2">
       <average-age />
     </div>
-    <div class="chart-container3">container3</div>
+    <div class="chart-container3">
+      <device-overview />
+    </div>
     <div class="chart-container4">container4</div>
     <div class="chart-container5">container5</div>
     <div class="chart-container6">container6</div>
@@ -17,6 +19,8 @@
 <script>
 import TotalUser from './TotalUser.vue'
 import AverageAge from './AverageAge.vue'
+import DeviceOverview from './DeviceOverview.vue'
+
 export default {
   props: {
     todayUser: Number,
@@ -25,7 +29,8 @@ export default {
   },
   components: {
     TotalUser,
-    AverageAge
+    AverageAge,
+    DeviceOverview
   }
 }
 </script>>
@@ -35,13 +40,13 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   .chart-container1 {
-    height: 300px;
+    height: 280px;
   }
   .chart-container2 {
     height: 320px;
   }
   .chart-container3 {
-    height: 280px;
+    height: 230px;
   }
   .chart-container4 {
     height: 230px;

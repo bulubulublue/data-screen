@@ -26,7 +26,6 @@
 </template>
 <script>
 import { inject, ref } from 'vue'
-import 'echarts/lib/chart/bar'
 export default {
   setup () {
     const screenData = inject('screen-data')
@@ -84,8 +83,6 @@ export default {
         }
       }
     }
-
-
 
     return {
       ageRangeData: screenData.value.ageRangeData,

@@ -26,8 +26,9 @@
     </div>
     <div class="progress">
       <div class="progress-inner-wrapper">
+
         <div class="progress-inner"
-             :style="{width:`${prevGrowthLastDay}%`}"></div>
+             :style="{width:`${growthLastDay}%`}"></div>
       </div>
     </div>
   </div>
