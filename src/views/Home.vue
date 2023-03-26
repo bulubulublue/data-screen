@@ -9,7 +9,10 @@
         <header-view class="header" />
         <div class="separator"></div>
         <div class="main-content">
-          <left-view class="left-view" />
+          <left-view class="left-view"
+                     :todayUser="todayUser"
+                     :growthLastDay="growthLastDay"
+                     :growthLastMonth="growthLastMonth" />
           <right-view class="right-view" />
         </div>
       </div>
@@ -18,11 +21,11 @@
   </div>
 </template>
 <script>
-import { ref } from 'vue'
+import { ref, provide, computed } from 'vue'
 import HeaderView from '@/components/Header/index.vue'
 import LeftView from '@/components/LeftView/index.vue'
 import RightView from '@/components/RightView/index.vue'
-
+import useScreenData from '../hooks/useScreenData.js'
 export default {
   name: 'Home',
   components: {
@@ -32,9 +35,13 @@ export default {
   },
   setup () {
     const loading = ref(false)
+    const data = useScreenData()
+
+    provide('screen-data', computed(() => data))
 
     return {
-      loading
+      loading,
+      ...data
     }
   }
 }
@@ -59,12 +66,11 @@ export default {
     flex-direction: column;
     .header {
       height: 167px;
-      background: purple;
     }
 
     .separator {
       height: 10px;
-      background: #000;
+      background: rgb(92, 88, 89);
     }
     .main-content {
       display: flex;

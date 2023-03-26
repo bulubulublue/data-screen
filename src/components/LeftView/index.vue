@@ -1,6 +1,10 @@
 <template>
   <div class="view-container">
-    <div class="chart-container1">container1</div>
+    <div class="chart-container1">
+      <total-user :todayUser="todayUser"
+                  :growthLastDay="growthLastDay"
+                  :growthLastMonth="growthLastMonth"></total-user>
+    </div>
     <div class="chart-container2">container2</div>
     <div class="chart-container3">container3</div>
     <div class="chart-container4">container4</div>
@@ -8,6 +12,19 @@
     <div class="chart-container6">container6</div>
   </div>
 </template>
+<script>
+import TotalUser from './TotalUser.vue'
+export default {
+  props: {
+    todayUser: Number,
+    growthLastDay: Number,
+    growthLastMonth: Number
+  },
+  components: {
+    TotalUser
+  }
+}
+</script>>
 <style scoped lang="scss">
 .view-container {
   display: flex;
