@@ -72,7 +72,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px 40px;
   letter-spacing: 3px;
   background: rgb(66, 68, 70);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);

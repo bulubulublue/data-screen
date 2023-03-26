@@ -5,7 +5,9 @@
                   :growthLastDay="growthLastDay"
                   :growthLastMonth="growthLastMonth"></total-user>
     </div>
-    <div class="chart-container2">container2</div>
+    <div class="chart-container2">
+      <average-age />
+    </div>
     <div class="chart-container3">container3</div>
     <div class="chart-container4">container4</div>
     <div class="chart-container5">container5</div>
@@ -14,6 +16,7 @@
 </template>
 <script>
 import TotalUser from './TotalUser.vue'
+import AverageAge from './AverageAge.vue'
 export default {
   props: {
     todayUser: Number,
@@ -21,7 +24,8 @@ export default {
     growthLastMonth: Number
   },
   components: {
-    TotalUser
+    TotalUser,
+    AverageAge
   }
 }
 </script>>
