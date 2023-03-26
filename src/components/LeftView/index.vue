@@ -11,8 +11,12 @@
     <div class="chart-container3">
       <device-overview />
     </div>
-    <div class="chart-container4">container4</div>
-    <div class="chart-container5">container5</div>
+    <div class="chart-container4">
+      <gender-overview />
+    </div>
+    <div class="chart-container5">
+      <rider-overview />
+    </div>
     <div class="chart-container6">container6</div>
   </div>
 </template>
@@ -20,6 +24,8 @@
 import TotalUser from './TotalUser.vue'
 import AverageAge from './AverageAge.vue'
 import DeviceOverview from './DeviceOverview.vue'
+import GenderOverview from './GenderOverview.vue'
+import RiderOverview from './RiderOverview.vue'
 
 export default {
   props: {
@@ -30,7 +36,9 @@ export default {
   components: {
     TotalUser,
     AverageAge,
-    DeviceOverview
+    DeviceOverview,
+    GenderOverview,
+    RiderOverview
   }
 }
 </script>>
@@ -49,7 +57,7 @@ export default {
     height: 230px;
   }
   .chart-container4 {
-    height: 230px;
+    height: 150px;
   }
   .chart-container5 {
     height: 300px;
