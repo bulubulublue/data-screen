@@ -31,15 +31,24 @@ export default {
         dataCurrentYear = riderData.value.rateData.currentYearRiders
         legends = [riderData.value.rateData.legend1, riderData.value.rateData.legend2]
       }
+      // option.value = {
+
+
+
+
+
       option.value = {
         xAxis: {
           type: 'category',
           data: axis,
           axisTick: {
-            alignWithLabel: true
+            alignWithLabel: true,
           },
+          axisLabel: {
+            fontSize: 20
+          }
         },
-        yAxis: { show: true },
+        yAxis: {},
         legend: {//图例，在series中和name属性相对应
           data: legends,
           textStyle: {
@@ -72,8 +81,10 @@ export default {
           }
         ],
         grid: {
-          left: 0,
+          left: 40,
           right: 0,
+          top: 70,
+          bottom: 40
         }
       };
     }

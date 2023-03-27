@@ -1,10 +1,10 @@
 import { ref, onMounted } from 'vue'
 
 const ageMockData = [
-  { startValue: 0, value: 11, axis: '0-20', color: 'rgba(116,166,49)' },
-  { startValue: 0, value: 22, axis: '20-30', color: 'rgba(190,245,99)' },
-  { startValue: 0, value: 33, axis: '30-50', color: 'rgba(202,252,137)' },
-  { startValue: 0, value: 44, axis: '>50', color: 'rgba(251,253,142)' },
+  { startValue: 0, value: 132418, axis: '0-20', color: 'rgba(116,166,49)' },
+  { startValue: 0, value: 332032, axis: '20-30', color: 'rgba(190,245,99)' },
+  { startValue: 0, value: 552540, axis: '30-50', color: 'rgba(202,252,137)' },
+  { startValue: 0, value: 32519, axis: '>50', color: 'rgba(251,253,142)' },
 ]
 
 const deviceMockData = {
@@ -64,6 +64,27 @@ const riderMockData = {
   },
 }
 
+const categoryMockData = {
+  data1: {
+    axisX: [
+      '粉面粥店',
+      '简餐便当',
+      '汉堡披萨',
+      '香锅冒菜',
+      '小吃炸串',
+      '地方菜系',
+      '轻食简餐',
+    ],
+    data1: [50, 29, 46, 88, 99, 69, 97], //国内
+    data2: [50, 71, 54, 12, 1, 31, 3], //海外
+  },
+  data2: {
+    axisX: ['草莓', '甘蔗', '榴莲', '菠萝', '香蕉', '梨', '苹果'],
+    data1: [85, 4, 3, 26, 63, 31, 19],
+    data2: [15, 96, 97, 74, 37, 69, 81],
+  },
+}
+
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
@@ -73,6 +94,7 @@ export default function () {
   const deviceData = ref(deviceMockData)
   const genderData = ref(genderMockData)
   const riderData = ref(riderMockData)
+  const categoryData = ref(categoryMockData)
 
   let task
   onMounted(() => {
@@ -92,5 +114,6 @@ export default function () {
     deviceData,
     genderData,
     riderData,
+    categoryData,
   }
 }

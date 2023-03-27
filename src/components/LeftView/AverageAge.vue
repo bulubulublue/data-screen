@@ -19,7 +19,7 @@
            v-for="item in ageRangeData"
            :key="item.axis">
         <div class="item-value">{{ item.value }}</div>
-        <div class="item-key">* {{ item.axis }}</div>
+        <div class="item-key"><span class="dot"></span> {{ item.axis }}</div>
       </div>
     </div>
   </div>
@@ -131,6 +131,18 @@ export default {
 
     .item-key {
       font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .dot {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
     }
   }
 }

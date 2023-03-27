@@ -129,8 +129,8 @@ export default {
 
         .dot {
           display: inline-block;
-          height: 10px;
-          width: 10px;
+          height: 8px;
+          width: 8px;
           background-color: #fff;
           border-radius: 50%;
           margin-right: 10px;

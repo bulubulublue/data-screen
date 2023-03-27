@@ -17,7 +17,9 @@
     <div class="chart-container5">
       <rider-overview />
     </div>
-    <div class="chart-container6">container6</div>
+    <div class="chart-container6">
+      <category-overview />
+    </div>
   </div>
 </template>
 <script>
@@ -26,6 +28,7 @@ import AverageAge from './AverageAge.vue'
 import DeviceOverview from './DeviceOverview.vue'
 import GenderOverview from './GenderOverview.vue'
 import RiderOverview from './RiderOverview.vue'
+import CategoryOverview from './CategoryOverview.vue'
 
 export default {
   props: {
@@ -38,7 +41,8 @@ export default {
     AverageAge,
     DeviceOverview,
     GenderOverview,
-    RiderOverview
+    RiderOverview,
+    CategoryOverview
   }
 }
 </script>>
