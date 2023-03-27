@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router/index.js'
 import VueEcharts from 'vue-echarts'
 import 'echarts' //  全量加载
-import icon from 'rollup-datav-libs/src/components/Icon/index'
+import Icon from 'rollup-datav-libs/src/components/Icon/index'
 import Loading from 'rollup-datav-libs/src/components/Loading/index'
 import Flybox from 'rollup-datav-libs/src/components/Flybox/index'
 import Container from 'rollup-datav-libs/src/components/Container/index'
@@ -14,7 +14,7 @@ import '@/styles/index.scss'
 
 const app = createApp(App)
 app.use(router)
-app.use(icon)
+app.use(Icon)
 app.use(Loading)
 app.use(Flybox)
 app.use(Container)

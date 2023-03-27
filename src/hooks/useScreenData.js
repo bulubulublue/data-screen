@@ -85,6 +85,15 @@ const categoryMockData = {
   },
 }
 
+const headerMockData = {
+  todaySales: 40105335,
+  todayOrders: 2570025,
+  todayUsers: 272200,
+  todayUsersIncrease: 1286552,
+  transitionRate: '13.16%',
+  returnRate: '5.73%',
+}
+
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
@@ -95,6 +104,7 @@ export default function () {
   const genderData = ref(genderMockData)
   const riderData = ref(riderMockData)
   const categoryData = ref(categoryMockData)
+  const headerData = ref(headerMockData)
 
   let task
   onMounted(() => {
@@ -115,5 +125,6 @@ export default function () {
     genderData,
     riderData,
     categoryData,
+    headerData,
   }
 }

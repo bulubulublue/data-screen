@@ -1,6 +1,8 @@
 <template>
   <div class="view-container">
-    <div class="top">top1</div>
+    <div class="top">
+      <top-header />
+    </div>
     <div class="subtop">top2</div>
     <div class="main-content">
       <div class="main-left">
@@ -16,13 +18,23 @@
     </div>
   </div>
 </template>
+<script>
+import TopHeader from './TopHeader.vue'
+export default {
+  components: {
+    TopHeader
+  },
+  setup () {
+
+  }
+}
+</script>
 <style scoped lang="scss">
 .view-container {
   display: flex;
   flex-direction: column;
   .top {
     height: 206px;
-    background-color: antiquewhite;
   }
 
   .subtop {

@@ -79,9 +79,9 @@ export default {
       .left-view {
         flex: 0 0 860px;
         width: 860px;
-        margin-right: 5px;
+        margin-right: 10px;
         height: 100%;
-        background: green;
+        background: rgb(33, 32, 32);
       }
 
       .right-view {
