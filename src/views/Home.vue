@@ -87,7 +87,7 @@ export default {
       .right-view {
         flex: 1;
         height: 100%;
-        background: yellow;
+        background: rgb(33, 32, 32);
       }
     }
   }

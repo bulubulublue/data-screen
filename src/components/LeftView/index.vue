@@ -55,19 +55,19 @@ export default {
     height: 280px;
   }
   .chart-container2 {
-    height: 320px;
+    height: 350px;
   }
   .chart-container3 {
-    height: 230px;
+    height: 260px;
   }
   .chart-container4 {
-    height: 150px;
+    height: 180px;
   }
   .chart-container5 {
-    height: 300px;
+    height: 360px;
   }
   .chart-container6 {
-    height: 360px;
+    height: 380px;
   }
 }
 </style>

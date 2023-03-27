@@ -3,11 +3,16 @@
     <div class="top">
       <top-header />
     </div>
-    <div class="subtop">top2</div>
+    <div class="subtop">
+      <transform-category :data="subTopItems" />
+    </div>
     <div class="main-content">
       <div class="main-left">
         <div class="main-item main-left-1">left1</div>
-        <div class="main-item main-left-2">left2</div>
+        <div class="main-item main-left-2">
+          <transform-category :data="leftItems"
+                              :color="leftColors" />
+        </div>
         <div class="main-item main-left-3">left3</div>
         <div class="main-item main-left-4">left3</div>
       </div>
@@ -20,16 +25,28 @@
 </template>
 <script>
 import TopHeader from './TopHeader.vue'
+import TransformCategory from '@/components/Common/TransformCategory.vue'
+
 export default {
   components: {
-    TopHeader
+    TopHeader,
+    TransformCategory
   },
   setup () {
+    const subTopItems = ['ALL', '北京', '上海', '深圳', '杭州', '南京', '武汉']
+    const leftItems = ['订单量', '销售额', '用户数', '退单量']
+    const leftColors = ['rgba(178,209,126)', 'rgba(116,166,49)']
 
+    return {
+      subTopItems,
+      leftItems,
+      leftColors
+    }
   }
 }
+
 </script>
-<style scoped lang="scss">
+  <style scoped lang="scss">
 .view-container {
   display: flex;
   flex-direction: column;
@@ -39,7 +56,7 @@ export default {
 
   .subtop {
     height: 48px;
-    background-color: beige;
+    margin: 10px 0;
   }
 
   .main-content {
@@ -56,7 +73,6 @@ export default {
       flex: 0 0 1917px;
       flex-direction: column;
       justify-content: space-between;
-      background-color: aquamarine;
       .main-left-1 {
         height: 999px;
       }
