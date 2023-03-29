@@ -94,6 +94,41 @@ const headerMockData = {
   returnRate: '5.73%',
 }
 
+const cities = [
+  'Beijing',
+  'Shanghai',
+  'Jinan',
+  'Shenzhen',
+  'Guangzhou',
+  'Nanjing',
+  'Hefei',
+  'Changchun',
+  'Taicang',
+  'Taiyuan',
+  'Hangzhou',
+  'Sichuan',
+  'Chongqing',
+  'Yunnan',
+  "Xi'an",
+  'Xiamen',
+  'Wuhan',
+  'Hebei',
+]
+
+const getRandomPercent = () => {
+  const symbol = Math.round(Math.random())
+  return `${symbol === 0 ? '-' : ''}${(Math.random() * 30).toFixed(2)}%`
+}
+
+const salesListMockData = cities.map((city) => ({
+  city,
+  order: getRandomPercent(),
+  shop: getRandomPercent(),
+  rider: getRandomPercent(),
+  newShop: getRandomPercent(),
+  avgOrder: getRandomPercent(),
+}))
+
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
@@ -105,6 +140,7 @@ export default function () {
   const riderData = ref(riderMockData)
   const categoryData = ref(categoryMockData)
   const headerData = ref(headerMockData)
+  const salesListData = ref(salesListMockData)
 
   let task
   onMounted(() => {
@@ -126,5 +162,6 @@ export default function () {
     riderData,
     categoryData,
     headerData,
+    salesListData,
   }
 }

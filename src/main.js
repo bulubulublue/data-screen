@@ -10,6 +10,7 @@ import Flybox from 'rollup-datav-libs/src/components/Flybox/index'
 import Container from 'rollup-datav-libs/src/components/Container/index'
 import Logo from 'rollup-datav-libs/src/components/Logo/index'
 import CountTo from 'rollup-datav-libs/src/components/CountTo/index'
+import BaseScrollList from 'rollup-datav-libs/src/components/BaseScrollList/index'
 import '@/styles/index.scss'
 
 const app = createApp(App)
@@ -20,6 +21,7 @@ app.use(Flybox)
 app.use(Container)
 app.use(Logo)
 app.use(CountTo)
+app.use(BaseScrollList)
 
 app.component(
   // 注册的名字
