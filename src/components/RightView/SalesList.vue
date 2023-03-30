@@ -32,9 +32,11 @@ export default {
       '人均订单量',
     ]
 
-    onMounted(() => {
-      prepareData()
-    })
+    prepareData()
+
+    // onMounted(() => {
+    //   prepareData()
+    // })
     return {
       headers,
       data,
@@ -46,6 +48,6 @@ export default {
 <style scoped>
 .scroll-table {
   height: 100%;
-  width: 100%;
+  width: 1023px;
 }
 </style>

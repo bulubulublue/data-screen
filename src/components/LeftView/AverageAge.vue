@@ -1,23 +1,21 @@
 <template>
   <div class="outer">
     <div class="header">
-      <span class="title">
-        外卖用户年龄分布&平均年龄
-      </span>
+      <span class="title"> 外卖用户年龄分布&平均年龄 </span>
       <span class="age">
         <span class="age-number">29.33</span>
         <span class="age-unit">岁</span>
       </span>
     </div>
     <div class="chart-container">
-      <v-chart class="chart"
-               :option="getOption()"
-               autoresize />
+      <v-chart class="chart" :option="getOption()" autoresize />
     </div>
     <div class="bottom">
-      <div class="bottom-item-container"
-           v-for="item in ageRangeData"
-           :key="item.axis">
+      <div
+        class="bottom-item-container"
+        v-for="item in ageRangeData"
+        :key="item.axis"
+      >
         <div class="item-value">{{ item.value }}</div>
         <div class="item-key"><span class="dot"></span> {{ item.axis }}</div>
       </div>
@@ -27,7 +25,7 @@
 <script>
 import { inject, ref } from 'vue'
 export default {
-  setup () {
+  setup() {
     const screenData = inject('screen-data')
 
     const getOption = () => {
@@ -35,38 +33,38 @@ export default {
       const color = []
       const axis = ['指标']
       let max = 0
-      screenData.value.ageRangeData.value.forEach(item => {
+      screenData.value.ageRangeData.value.forEach((item) => {
         data.push(item.value)
         color.push(item.color)
         axis.push(item.axis)
         max += item.value
       })
-      console.log(max)
       return {
         color,
         tooltip: {
           textStyle: {
-            fontSize: 28
+            fontSize: 28,
           },
-          padding: 10
+          padding: 10,
         },
         dataset: {
-          source: [axis, data]
+          source: [axis, data],
         },
         xAxis: {
-          type: 'value', max,
+          type: 'value',
+          max,
           splitLine: { show: false },
           axisTick: { show: false },
           axisLabel: {
             color: 'rgba(98,105,113)',
-            fontSize: 18
+            fontSize: 18,
           },
           axisLine: {
             lineStyle: {
               color: 'rgb(50,51,53)',
-              width: 3
-            }
-          }
+              width: 3,
+            },
+          },
         }, // 设置坐标最大值
         yAxis: { type: 'category', show: false },
         series: [
@@ -79,17 +77,16 @@ export default {
           left: 10,
           right: 30,
           top: 40,
-          bottom: 40
-        }
+          bottom: 40,
+        },
       }
     }
 
     return {
       ageRangeData: screenData.value.ageRangeData,
-      getOption
+      getOption,
     }
-
-  }
+  },
 }
 </script>
 <style scoped lang="scss">

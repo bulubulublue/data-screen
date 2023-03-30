@@ -8,7 +8,9 @@
     </div>
     <div class="main-content">
       <div class="main-left">
-        <div class="main-item main-left-1">left1</div>
+        <div class="main-item main-left-1">
+          <order-map />
+        </div>
         <div class="main-item main-left-2">
           <transform-category :data="leftItems" :color="leftColors" />
         </div>
@@ -28,11 +30,14 @@
 import TopHeader from './TopHeader.vue'
 import TransformCategory from '@/components/Common/TransformCategory.vue'
 import SalesList from './SalesList.vue'
+import OrderMap from './OrderMap.vue'
+
 export default {
   components: {
     TopHeader,
     TransformCategory,
     SalesList,
+    OrderMap,
   },
   setup() {
     const subTopItems = ['ALL', '北京', '上海', '深圳', '杭州', '南京', '武汉']
