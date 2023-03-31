@@ -14,14 +14,20 @@
         <div class="main-item main-left-2">
           <transform-category :data="leftItems" :color="leftColors" />
         </div>
-        <div class="main-item main-left-3">left3</div>
-        <div class="main-item main-left-4">left3</div>
+        <div class="main-item main-left-3">
+          <realtime-orders />
+        </div>
+        <div class="main-item main-left-4">
+          <calendar-data />
+        </div>
       </div>
       <div class="main-right">
         <div class="main-item main-right-1">
           <sales-list />
         </div>
-        <div class="main-item main-right-2">right2</div>
+        <div class="main-item main-right-2">
+          <shop-data />
+        </div>
       </div>
     </div>
   </div>
@@ -31,6 +37,9 @@ import TopHeader from './TopHeader.vue'
 import TransformCategory from '@/components/Common/TransformCategory.vue'
 import SalesList from './SalesList.vue'
 import OrderMap from './OrderMap.vue'
+import RealtimeOrders from './RealtimeOrders.vue'
+import CalendarData from './CalendarData.vue'
+import ShopData from './ShopData.vue'
 
 export default {
   components: {
@@ -38,6 +47,9 @@ export default {
     TransformCategory,
     SalesList,
     OrderMap,
+    RealtimeOrders,
+    CalendarData,
+    ShopData,
   },
   setup() {
     const subTopItems = ['ALL', '北京', '上海', '深圳', '杭州', '南京', '武汉']
@@ -84,7 +96,7 @@ export default {
       }
 
       .main-left-2 {
-        height: 80px;
+        height: 50px;
       }
 
       .main-left-3 {

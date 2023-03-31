@@ -118,7 +118,7 @@ export default function () {
           data: lineData.value,
           effect: {
             show: true,
-            period: 4,
+            period: 2,
             symbol: 'arrow',
             trailLength: 0.03,
             symbolSize: 7,

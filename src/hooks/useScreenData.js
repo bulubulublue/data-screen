@@ -1,4 +1,5 @@
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import * as dayjs from 'dayjs'
 
 const ageMockData = [
   { startValue: 0, value: 132418, axis: '0-20', color: 'rgba(116,166,49)' },
@@ -129,6 +130,66 @@ const salesListMockData = cities.map((city) => ({
   avgOrder: getRandomPercent(),
 }))
 
+const realTimeOrderMockData = {
+  totalOrders: 23242,
+  weekGrowth: '2.32%',
+  date: [
+    '12:25:13',
+    '12:25:25',
+    '12:25:37',
+    '12:25:44',
+    '12:25:48',
+    '12:25:52',
+    '12:25:59',
+    '12:26:14',
+    '12:26:25',
+    '12:26:36',
+  ],
+  data: [1143, 769, 251, 733, 224, 567, 357, 1239, 567, 1460],
+}
+
+const getDateData = () => {
+  const total = 180
+
+  const dataArr = Array.from({ length: total }).map((v, i) => {
+    return [
+      dayjs('2023-01-01')
+        .add(i + 1, 'day')
+        .format('YYYY-MM-DD'),
+      Math.floor(Math.random() * 1000),
+    ]
+  })
+
+  return dataArr
+}
+
+const mockShopData = [
+  {
+    city: '北京',
+    shops: [
+      { shop: '必胜客', order: 1235, sales: 345613 },
+      { shop: '肯德基', order: 1378, sales: 126854 },
+      { shop: '麦当劳', order: 2102, sales: 369643 },
+    ],
+  },
+  {
+    city: '上海',
+    shops: [
+      { shop: '必胜客', order: 4532, sales: 578352 },
+      { shop: '肯德基', order: 1876, sales: 236864 },
+      { shop: '麦当劳', order: 3468, sales: 653415 },
+    ],
+  },
+  {
+    city: '广州',
+    shops: [
+      { shop: '必胜客', order: 7425, sales: 235674 },
+      { shop: '肯德基', order: 8235, sales: 436788 },
+      { shop: '麦当劳', order: 1367, sales: 245677 },
+    ],
+  },
+]
+
 export default function () {
   const todayUser = ref(10000)
   const growthLastDay = ref(10)
@@ -141,6 +202,9 @@ export default function () {
   const categoryData = ref(categoryMockData)
   const headerData = ref(headerMockData)
   const salesListData = ref(salesListMockData)
+  const realTimeOrder = ref(realTimeOrderMockData)
+  const dateData = ref(getDateData())
+  const shopData = ref(mockShopData)
 
   let task
   onMounted(() => {
@@ -149,6 +213,10 @@ export default function () {
       growthLastDay.value += 1.2
       growthLastMonth.value += 0.125
     }, 60000)
+  })
+
+  onUnmounted(() => {
+    task && clearInterval(task)
   })
 
   return {
@@ -163,5 +231,8 @@ export default function () {
     categoryData,
     headerData,
     salesListData,
+    realTimeOrder,
+    dateData,
+    shopData,
   }
 }
