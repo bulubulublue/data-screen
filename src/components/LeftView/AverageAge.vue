@@ -16,7 +16,7 @@
         v-for="item in ageRangeData"
         :key="item.axis"
       >
-        <div class="item-value">{{ item.value }}</div>
+        <div class="item-value">{{ formatNumber(item.value) }}</div>
         <div class="item-key"><span class="dot"></span> {{ item.axis }}</div>
       </div>
     </div>
@@ -24,6 +24,7 @@
 </template>
 <script>
 import { inject, ref } from 'vue'
+import { formatNumber } from '@/utils/index'
 export default {
   setup() {
     const screenData = inject('screen-data')
@@ -85,6 +86,7 @@ export default {
     return {
       ageRangeData: screenData.value.ageRangeData,
       getOption,
+      formatNumber,
     }
   },
 }

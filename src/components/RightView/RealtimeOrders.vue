@@ -3,7 +3,7 @@
     <div class="outer">
       <div class="left">
         <div class="title">实时订单趋势图</div>
-        <div class="number">{{ realTimeOrder.totalOrders }}</div>
+        <div class="number">{{ formatNumber(realTimeOrder.totalOrders) }}</div>
         <div class="subtitle">周同比增长率</div>
         <div class="rate-number">{{ realTimeOrder.weekGrowth }}</div>
       </div>
@@ -15,6 +15,7 @@
 </template>
 <script>
 import { inject, computed, ref } from 'vue'
+import { formatNumber } from '@/utils/index'
 
 export default {
   setup() {
@@ -61,6 +62,7 @@ export default {
     return {
       realTimeOrder,
       option,
+      formatNumber,
     }
   },
 }

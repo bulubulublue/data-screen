@@ -7,7 +7,7 @@
       <div class="data-container">
         <div class="title">男性用户人数</div>
         <div class="content">
-          <span class="number">{{maleCount}}</span>
+          <span class="number">{{ formatNumber(maleCount) }}</span>
           <span class="unit">万人</span>
         </div>
       </div>
@@ -19,7 +19,7 @@
       <div class="data-container">
         <div class="title">女性用户人数</div>
         <div class="content">
-          <span class="number">{{femaleCount}}</span>
+          <span class="number">{{ formatNumber(femaleCount) }}</span>
           <span class="unit">万人</span>
         </div>
       </div>
@@ -30,21 +30,31 @@
 import MaleIcon from '../Icon/Male.vue'
 import FemaleIcon from '../Icon/Female.vue'
 import { inject, computed } from 'vue'
+import { formatNumber } from '@/utils/index'
 
 export default {
   components: {
     MaleIcon,
-    FemaleIcon
+    FemaleIcon,
   },
-  setup () {
+  setup() {
     const screenData = inject('screen-data')
-    const maleCount = computed(() => screenData.value.genderData.value.find(item => item.key === 'male').value)
-    const femaleCount = computed(() => screenData.value.genderData.value.find(item => item.key === 'female').value)
+    const maleCount = computed(
+      () =>
+        screenData.value.genderData.value.find((item) => item.key === 'male')
+          .value
+    )
+    const femaleCount = computed(
+      () =>
+        screenData.value.genderData.value.find((item) => item.key === 'female')
+          .value
+    )
     return {
       maleCount,
-      femaleCount
+      femaleCount,
+      formatNumber,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

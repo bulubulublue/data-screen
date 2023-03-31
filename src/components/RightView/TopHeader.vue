@@ -1,78 +1,77 @@
 <template>
   <div class="outer">
     <div class="left">
-      <div class="item-container"
-           v-for="item in data"
-           :key="item.label">
+      <div class="item-container" v-for="item in data" :key="item.label">
         <div class="item-icon">
           <icon :name="item.icon" />
         </div>
         <div class="content">
           <div class="title">{{ item.label }}</div>
-          <div class="value">{{ item.value }}</div>
+          <div class="value">{{ formatNumber(item.value) }}</div>
         </div>
       </div>
     </div>
     <div class="right">
-      <div class="item-container"
-           v-for="item in dataRight"
-           :key="item.label">
+      <div class="item-container" v-for="item in dataRight" :key="item.label">
         <div class="item-icon">
           <icon :name="item.icon" />
         </div>
         <div class="title">{{ item.label }}</div>
-        <div class="value">{{ item.value }}</div>
+        <div class="value">{{ formatNumber(item.value) }}</div>
       </div>
-
     </div>
   </div>
 </template>
 <script>
 import { inject, computed } from 'vue'
+import { formatNumber } from '@/utils/index'
 
 export default {
-  setup () {
+  setup() {
     const screenData = inject('screen-data')
     const headerData = computed(() => screenData.value.headerData.value)
-    const data = computed(() => [{
-      label: '今日销售额',
-      value: headerData.value.todayOrders,
-      icon: 'icon-money'
-    },
-    {
-      label: '今日订单量',
-      value: headerData.value.todayOrders,
-      icon: 'icon-orders'
-    },
-    {
-      label: '今日交易用户数',
-      value: headerData.value.todayUsers,
-      icon: 'icon-team'
-    },
-    {
-      label: '今日新增用户数',
-      value: headerData.value.todayUsersIncrease,
-      icon: 'icon-mine'
-    }])
+    const data = computed(() => [
+      {
+        label: '今日销售额',
+        value: headerData.value.todayOrders,
+        icon: 'icon-money',
+      },
+      {
+        label: '今日订单量',
+        value: headerData.value.todayOrders,
+        icon: 'icon-orders',
+      },
+      {
+        label: '今日交易用户数',
+        value: headerData.value.todayUsers,
+        icon: 'icon-team',
+      },
+      {
+        label: '今日新增用户数',
+        value: headerData.value.todayUsersIncrease,
+        icon: 'icon-mine',
+      },
+    ])
 
     const dataRight = computed(() => [
       {
         label: '转化率',
         value: headerData.value.transitionRate,
-        icon: 'icon-Delete'
+        icon: 'icon-Delete',
       },
       {
         label: '退单率',
         value: headerData.value.returnRate,
-        icon: 'icon-Ok'
-      }
+        icon: 'icon-Ok',
+      },
     ])
 
     return {
       data,
-      dataRight
+      dataRight,
+      formatNumber,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

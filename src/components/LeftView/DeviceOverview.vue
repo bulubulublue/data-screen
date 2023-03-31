@@ -1,24 +1,25 @@
 <template>
   <div class="outer">
     <div class="chart-container">
-      <v-chart class="chart"
-               :option="getOption()"></v-chart>
+      <v-chart class="chart" :option="getOption()"></v-chart>
     </div>
     <div class="right">
       <div class="right-top">
-        <span class="title">
-          外卖登录设备
-        </span>
+        <span class="title"> 外卖登录设备 </span>
         <span class="age">
-          <span class="age-number">{{deviceData.totalDevices}}</span>
+          <span class="age-number">{{
+            formatNumber(deviceData.totalDevices)
+          }}</span>
           <span class="age-unit">台</span>
         </span>
       </div>
       <div class="right-bottom">
-        <div class="bottom-item-container"
-             v-for="item in deviceData.devices"
-             :key="item.key">
-          <div class="item-value">{{ item.value }}</div>
+        <div
+          class="bottom-item-container"
+          v-for="item in deviceData.devices"
+          :key="item.key"
+        >
+          <div class="item-value">{{ formatNumber(item.value) }}</div>
           <div class="item-key">
             <span class="dot"></span>
             <span>{{ item.key }}</span>
@@ -30,16 +31,18 @@
 </template>
 <script>
 import { inject } from 'vue'
+import { formatNumber } from '@/utils/index'
+
 export default {
-  setup () {
+  setup() {
     const screenData = inject('screen-data')
 
     const getOption = () => {
       const data = []
-      screenData.value.deviceData.value.devices.forEach(item => {
+      screenData.value.deviceData.value.devices.forEach((item) => {
         data.push({
           value: item.value,
-          name: item.key
+          name: item.key,
         })
       })
 
@@ -53,28 +56,28 @@ export default {
             clockwise: true, // 数值会从大到小顺时针排列
             center: ['50%', '50%'],
             label: {
-              show: false
+              show: false,
             },
             data,
             roseType: 'area', //设置为玫瑰图
             radius: '100%',
-          }
+          },
         ],
         grid: {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
-        }
+          bottom: 0,
+        },
       }
-
     }
 
     return {
       deviceData: screenData.value.deviceData,
-      getOption
+      getOption,
+      formatNumber,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

@@ -20,3 +20,11 @@ export const formatTime = (v) => {
 
 export const toLocalDateTime = (date) =>
   `${formatDate(date)} ${formatTime(date)}`
+
+export function formatNumber(v) {
+  // if(isNaN(Number(v))) return
+  // return Number(v).toLocaleString() // v需要是数字
+
+  const reg = /\d{1,3}(?=(\d{3})+$)/g // 表示匹配1到3位数字，后面需要紧跟着>1个3个成一组的数字
+  return `${v}`.replace(reg, '$&,') //$&表示匹配到的内容
+}
