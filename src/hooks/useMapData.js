@@ -118,15 +118,15 @@ export default function () {
           data: lineData.value,
           effect: {
             show: true,
-            period: 2,
+            // period: 2,
             symbol: 'arrow',
-            trailLength: 0.03,
+            // trailLength: 0.03, // 尾部效果
             symbolSize: 7,
           },
           lineStyle: {
             color: '#1DE9B6',
             width: 2,
-            curveness: 0.3,
+            curveness: 0.3, //直线弯曲度
             opacity: 0.3,
           },
           zlevel: 2,

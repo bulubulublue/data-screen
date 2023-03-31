@@ -12,8 +12,10 @@ import Logo from 'rollup-datav-libs/src/components/Logo/index'
 import CountTo from 'rollup-datav-libs/src/components/CountTo/index'
 import BaseScrollList from 'rollup-datav-libs/src/components/BaseScrollList/index'
 import '@/styles/index.scss'
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
+app.use(createPinia())
 app.use(router)
 app.use(Icon)
 app.use(Loading)

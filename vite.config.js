@@ -1,13 +1,24 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { viteMockServe } from 'vite-plugin-mock'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'), // 设置 `@` 指向 `src` 目录
     },
   },
-  plugins: [vue()],
+  plugins: [
+    Vue(),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    viteMockServe({
+      mockPath: 'mock',
+      logger: true,
+    }),
+  ],
 })
