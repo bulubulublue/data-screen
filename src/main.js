@@ -13,6 +13,7 @@ import CountTo from 'rollup-datav-libs/src/components/CountTo/index'
 import BaseScrollList from 'rollup-datav-libs/src/components/BaseScrollList/index'
 import '@/styles/index.scss'
 import { createPinia } from 'pinia'
+import SocketService from './utils/socket'
 
 const app = createApp(App)
 app.use(createPinia())
@@ -32,3 +33,6 @@ app.component(
 )
 
 app.mount('#app')
+
+SocketService.Instance.connect()
+// app.prototype.$socket = SocketService.Instance
