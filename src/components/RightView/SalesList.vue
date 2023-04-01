@@ -10,11 +10,9 @@
   />
 </template>
 <script>
-import { useI18n } from 'vue-i18n'
 import { onMounted, inject, computed, ref } from 'vue'
 export default {
   setup() {
-    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
     const salesListData = computed(() => screenData.value.salesListData.value)
     const data = ref([])
@@ -25,14 +23,28 @@ export default {
 
     const headerStyle = [{ width: '80px' }]
 
-    const headers = [
-      t('city'),
-      t('volume'),
-      t('shops'),
-      t('riders'),
-      t('newShops'),
-      t('avgOrders'),
-    ]
+    const headers = ref([])
+
+    const locale = localStorage.getItem('currLang')
+    if (locale === 'zh-cn') {
+      headers.value = [
+        '城市',
+        '订单量',
+        '店铺数',
+        '接单骑手人数',
+        '新店铺数量',
+        '人均订单量',
+      ]
+    } else {
+      headers.value = [
+        'City',
+        'Volume',
+        'Shops',
+        'Riders',
+        'New Shops',
+        'Average Orders',
+      ]
+    }
 
     prepareData()
 
