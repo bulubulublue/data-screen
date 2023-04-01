@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <div class="header">
+      <change-lang class="change-lang" :height="40" :width="40" />
+    </div>
     <top-view />
     <sales-view />
     <bottom-view />
@@ -13,6 +16,7 @@ import MapView from '@/components/Report/MapView/index.vue'
 import SalesView from '@/components/Report/SalesView/index.vue'
 import BottomView from '@/components/Report/BottomView/index.vue'
 import useDataStore from '@/stores/data'
+import ChangeLang from '@/components/ChangeLang.vue'
 
 export default {
   name: 'HomeView',
@@ -21,6 +25,7 @@ export default {
     MapView,
     SalesView,
     BottomView,
+    ChangeLang,
   },
   setup() {
     const store = useDataStore()
@@ -44,11 +49,19 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .home {
   width: 100%;
   padding: 20px;
+  padding-top: 10px;
   background: #eee;
   box-sizing: border-box;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 }
 </style>

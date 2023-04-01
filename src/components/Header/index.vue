@@ -1,17 +1,31 @@
 <template>
   <div class="view-container">
-    <div class="logo-container">
-      <logo></logo>
+    <div class="left-view">
+      <div class="logo-container">
+        <logo></logo>
+      </div>
+      <div class="title-container">
+        <div class="title-cn">{{ t('dashboardTitle') }}</div>
+      </div>
     </div>
-    <div class="title-container">
-      <div class="title-cn">外卖业务数据大盘</div>
-      <div class="title-en">Delivery Overview</div>
+    <div class="right-view">
+      <change-lang class="change-lang" dark />
     </div>
   </div>
 </template>
 <script>
-export default {
+import { useI18n } from 'vue-i18n'
+import ChangeLang from '@/components/ChangeLang.vue'
 
+export default {
+  components: {
+    ChangeLang,
+  },
+  setup() {
+    const { t } = useI18n({ useScope: 'global' })
+
+    return { t }
+  },
 }
 </script>
 <style scoped lang="scss">
@@ -20,27 +34,26 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 64px;
+  justify-content: space-between;
 
-  .logo-container {
-    height: 120px;
-    width: 120px;
-    margin-right: 20px;
-  }
-
-  .title-container {
+  .left-view {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    .title-cn {
-      font-weight: bold;
-      font-size: 60px;
-      letter-spacing: 5px;
+    .logo-container {
+      height: 120px;
+      width: 120px;
+      margin-right: 20px;
     }
 
-    .title-en {
-      font-size: 35px;
-      letter-spacing: 3px;
+    .title-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      .title-cn {
+        font-weight: bold;
+        font-size: 60px;
+        letter-spacing: 5px;
+      }
     }
   }
 }

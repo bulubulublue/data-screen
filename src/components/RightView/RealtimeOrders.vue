@@ -14,20 +14,26 @@
   </flybox>
 </template>
 <script>
-import { inject, computed, ref } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { formatNumber } from '@/utils/index'
+import SocketService from '@/utils/socket'
 
 export default {
   setup() {
-    const screenData = inject('screen-data')
-    const realTimeOrder = computed(() => screenData.value.realTimeOrder.value)
-    const option = ref({
+    //   const screenData = inject('screen-data')
+    //   const realTimeOrder = computed(() => screenData.value.realTimeOrder.value)
+    const realTimeOrder = ref({})
+    const getData = (data) => {
+      realTimeOrder.value = data
+    }
+
+    const option = computed(() => ({
       xAxis: {
         type: 'category',
         data: realTimeOrder.value.date,
         axisLabel: {
           fontSize: 24,
-          interval: 0,
+          // interval: 0,
         },
         axisTick: {
           alignWithLabel: true,
@@ -58,7 +64,24 @@ export default {
         right: 0,
         left: 80,
       },
+    }))
+
+    onMounted(() => {
+      SocketService.Instance.registerCallback('getData', getData)
+      // connect方法在main中调用，可能连接还没成功，组件里就调用了send方法，则会造成报错
+      SocketService.Instance.send({
+        action: 'getData',
+        functionName: 'getData',
+      })
     })
+
+    onUnmounted(() => {
+      SocketService.Instance.unregisterCallback('getData')
+      SocketService.Instance.send({
+        action: 'unmount',
+      })
+    })
+
     return {
       realTimeOrder,
       option,

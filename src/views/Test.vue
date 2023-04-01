@@ -19,7 +19,7 @@ export default {
     })
 
     onUnmounted(() => {
-      unregisterCallback('getData')
+      SocketService.Instance.unregisterCallback('getData')
     })
     return {}
   },

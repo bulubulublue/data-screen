@@ -14,6 +14,7 @@ import BaseScrollList from 'rollup-datav-libs/src/components/BaseScrollList/inde
 import '@/styles/index.scss'
 import { createPinia } from 'pinia'
 import SocketService from './utils/socket'
+import { i18n } from '@/locales'
 
 const app = createApp(App)
 app.use(createPinia())
@@ -25,6 +26,7 @@ app.use(Container)
 app.use(Logo)
 app.use(CountTo)
 app.use(BaseScrollList)
+app.use(i18n)
 
 app.component(
   // 注册的名字

@@ -3,20 +3,21 @@
     <loading v-if="loading">
       <div class="loading-content">Loading...</div>
     </loading>
-    <container v-else
-               :options="{height:2160,width:3840}">
+
+    <container v-else :options="{ height: 2160, width: 3840 }">
       <div class="content-container">
         <header-view class="header" />
         <div class="separator"></div>
         <div class="main-content">
-          <left-view class="left-view"
-                     :todayUser="todayUser"
-                     :growthLastDay="growthLastDay"
-                     :growthLastMonth="growthLastMonth" />
+          <left-view
+            class="left-view"
+            :todayUser="todayUser"
+            :growthLastDay="growthLastDay"
+            :growthLastMonth="growthLastMonth"
+          />
           <right-view class="right-view" />
         </div>
       </div>
-
     </container>
   </div>
 </template>
@@ -26,24 +27,28 @@ import HeaderView from '@/components/Header/index.vue'
 import LeftView from '@/components/LeftView/index.vue'
 import RightView from '@/components/RightView/index.vue'
 import useScreenData from '../hooks/useScreenData.js'
+
 export default {
   name: 'Home',
   components: {
     HeaderView,
     LeftView,
-    RightView
+    RightView,
   },
-  setup () {
+  setup() {
     const loading = ref(false)
     const data = useScreenData()
 
-    provide('screen-data', computed(() => data))
+    provide(
+      'screen-data',
+      computed(() => data)
+    )
 
     return {
       loading,
-      ...data
+      ...data,
     }
-  }
+  },
 }
 </script>
 <style scoped lang="scss">
@@ -64,6 +69,7 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+
     .header {
       height: 167px;
     }
