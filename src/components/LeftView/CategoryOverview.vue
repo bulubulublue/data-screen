@@ -1,20 +1,22 @@
 <template>
   <div class="outer">
     <div class="title-container">
-      <div class="title">当前热卖品类</div>
-      <div class="date">最新更新时间:{{dateTime}}</div>
+      <div class="title">{{ t('hotSales') }}</div>
+      <div class="date">{{ t('lastUpdate') }}:{{ dateTime }}</div>
     </div>
     <div class="chart-container">
-      <v-chart class="chart"
-               :option="option" />
+      <v-chart class="chart" :option="option" />
     </div>
   </div>
 </template>
 <script>
 import { computed, inject, onMounted, ref, watch } from 'vue'
 import { toLocalDateTime } from '@/utils/index'
+import { useI18n } from 'vue-i18n'
+
 export default {
-  setup () {
+  setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const chartType = ref(0)
     const screenData = inject('screen-data')
     const categoryData = computed(() => screenData.value.categoryData.value)
@@ -43,8 +45,8 @@ export default {
             alignWithLabel: true,
           },
           axisLabel: {
-            fontSize: 20
-          }
+            fontSize: 20,
+          },
         },
         yAxis: { show: true },
         color: ['rgba(202,252,137)', 'rgba(67, 64, 64,.8)'],
@@ -52,21 +54,21 @@ export default {
           {
             data: dataDomestic,
             type: 'bar',
-            stack: 'category'
+            stack: 'category',
           },
           {
             data: dataOversea,
             type: 'bar',
-            stack: 'category'
-          }
+            stack: 'category',
+          },
         ],
         grid: {
           left: 40,
           right: 0,
           top: 70,
-          bottom: 40
-        }
-      };
+          bottom: 40,
+        },
+      }
     }
 
     watch(chartType, () => {
@@ -85,11 +87,11 @@ export default {
     })
 
     return {
+      t,
       option,
-      dateTime
+      dateTime,
     }
-  }
-
+  },
 }
 </script>
 <style lang="scss" scoped>

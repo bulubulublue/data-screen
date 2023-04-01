@@ -25,29 +25,31 @@
 <script>
 import { inject, computed } from 'vue'
 import { formatNumber } from '@/utils/index'
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
     const headerData = computed(() => screenData.value.headerData.value)
     const data = computed(() => [
       {
-        label: '今日销售额',
+        label: t('todaySales'),
         value: headerData.value.todayOrders,
         icon: 'icon-money',
       },
       {
-        label: '今日订单量',
+        label: t('todayOrders'),
         value: headerData.value.todayOrders,
         icon: 'icon-orders',
       },
       {
-        label: '今日交易用户数',
+        label: t('todayUsers'),
         value: headerData.value.todayUsers,
         icon: 'icon-team',
       },
       {
-        label: '今日新增用户数',
+        label: t('todayNewUsers'),
         value: headerData.value.todayUsersIncrease,
         icon: 'icon-mine',
       },
@@ -55,18 +57,19 @@ export default {
 
     const dataRight = computed(() => [
       {
-        label: '转化率',
+        label: t('transitRate'),
         value: headerData.value.transitionRate,
         icon: 'icon-Delete',
       },
       {
-        label: '退单率',
+        label: t('returnRate'),
         value: headerData.value.returnRate,
         icon: 'icon-Ok',
       },
     ])
 
     return {
+      t,
       data,
       dataRight,
       formatNumber,

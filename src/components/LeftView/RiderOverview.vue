@@ -1,16 +1,18 @@
 <template>
   <div class="outer">
-    <div class="title">外卖骑手概况</div>
+    <div class="title">{{ t('riderOverview') }}</div>
     <div class="chart-container">
-      <v-chart class="chart"
-               :option="option" />
+      <v-chart class="chart" :option="option" />
     </div>
   </div>
 </template>
 <script>
 import { computed, inject, onMounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
 export default {
-  setup () {
+  setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const chartType = ref(0)
     const screenData = inject('screen-data')
     const riderData = computed(() => screenData.value.riderData.value)
@@ -25,17 +27,19 @@ export default {
       if (chartType.value === 0) {
         dataLastYear = riderData.value.orderData.lastYearPersonUnit
         dataCurrentYear = riderData.value.orderData.currentYearPersonUnit
-        legends = [riderData.value.orderData.legend1, riderData.value.orderData.legend2]
+        legends = [
+          t(riderData.value.orderData.legend1),
+          t(riderData.value.orderData.legend2),
+        ]
       } else {
         dataLastYear = riderData.value.rateData.lastYearRiders
         dataCurrentYear = riderData.value.rateData.currentYearRiders
-        legends = [riderData.value.rateData.legend1, riderData.value.rateData.legend2]
+        legends = [
+          t(riderData.value.rateData.legend1),
+          t(riderData.value.rateData.legend2),
+        ]
       }
       // option.value = {
-
-
-
-
 
       option.value = {
         xAxis: {
@@ -45,17 +49,18 @@ export default {
             alignWithLabel: true,
           },
           axisLabel: {
-            fontSize: 20
-          }
+            fontSize: 20,
+          },
         },
         yAxis: {},
-        legend: {//图例，在series中和name属性相对应
+        legend: {
+          //图例，在series中和name属性相对应
           data: legends,
           textStyle: {
             color: '#fff',
-            fontSize: 24
+            fontSize: 24,
           },
-          right: 0
+          right: 0,
         },
         series: [
           {
@@ -64,10 +69,10 @@ export default {
             type: 'line',
             smooth: true,
             lineStyle: {
-              color: 'rgba(251,253,142)'
+              color: 'rgba(251,253,142)',
             },
             itemStyle: {
-              opacity: 0
+              opacity: 0,
             }, // 控制每个数据点不可见
           },
           {
@@ -76,17 +81,17 @@ export default {
             type: 'line',
             smooth: true,
             itemStyle: {
-              opacity: 0
+              opacity: 0,
             }, // 控制每个数据点不可见
-          }
+          },
         ],
         grid: {
           left: 40,
           right: 0,
           top: 70,
-          bottom: 40
-        }
-      };
+          bottom: 40,
+        },
+      }
     }
 
     watch(chartType, () => {
@@ -105,10 +110,10 @@ export default {
     })
 
     return {
-      option
+      option,
+      t,
     }
-  }
-
+  },
 }
 </script>
 <style lang="scss" scoped>

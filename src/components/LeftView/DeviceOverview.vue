@@ -5,12 +5,12 @@
     </div>
     <div class="right">
       <div class="right-top">
-        <span class="title"> 外卖登录设备 </span>
+        <span class="title"> {{ t('devices') }} </span>
         <span class="age">
           <span class="age-number">{{
             formatNumber(deviceData.totalDevices)
           }}</span>
-          <span class="age-unit">台</span>
+          <span class="age-unit">{{ t('deviceUnit') }}</span>
         </span>
       </div>
       <div class="right-bottom">
@@ -32,9 +32,11 @@
 <script>
 import { inject } from 'vue'
 import { formatNumber } from '@/utils/index'
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
 
     const getOption = () => {
@@ -73,6 +75,7 @@ export default {
     }
 
     return {
+      t,
       deviceData: screenData.value.deviceData,
       getOption,
       formatNumber,

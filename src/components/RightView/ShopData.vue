@@ -1,24 +1,24 @@
 <template>
   <div class="outer-wrapper">
-    <div class="title">地区商家销售排行</div>
+    <div class="title">{{ t('areaSales') }}</div>
     <div class="main-content">
       <div
         class="main-content-item"
         v-for="(item, i) in shopData"
         :key="item.city"
       >
-        <div class="area-title">{{ item.city }}</div>
+        <div class="area-title">{{ t(item.city) }}</div>
         <div class="chart-container">
           <v-chart class="chart" :option="options[i]"></v-chart>
         </div>
         <div class="table-container">
           <div class="table-header">
-            <span class="column-1">商家</span>
-            <span class="column-2">订单量</span>
-            <span class="column-3">销售额</span>
+            <span class="column-1">{{ t('shop') }}</span>
+            <span class="column-2">{{ t('volume') }}</span>
+            <span class="column-3">{{ t('salesRevenue') }}</span>
           </div>
           <div class="table-rows" v-for="data in item.shops" :key="data.shop">
-            <span class="column-1">{{ data.shop }}</span>
+            <span class="column-1">{{ t(data.shop) }}</span>
             <span class="column-2">{{ data.order }}</span>
             <span class="column-3">{{ data.sales }}</span>
           </div>
@@ -29,9 +29,11 @@
 </template>
 <script>
 import { inject, computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
     const shopData = computed(() => screenData.value.shopData.value)
 
@@ -39,7 +41,7 @@ export default {
     shopData.value.forEach((item) => {
       const data = item.shops.map((i) => ({
         value: i.sales,
-        name: i.shop,
+        name: t(i.shop),
       }))
 
       options.value.push({
@@ -77,6 +79,7 @@ export default {
     })
 
     return {
+      t,
       options,
       shopData,
     }

@@ -5,10 +5,10 @@
         <male-icon class="icon" />
       </div>
       <div class="data-container">
-        <div class="title">男性用户人数</div>
+        <div class="title">{{ t('maleUsers') }}</div>
         <div class="content">
           <span class="number">{{ formatNumber(maleCount) }}</span>
-          <span class="unit">万人</span>
+          <span class="unit">{{ t('userUnit') }}</span>
         </div>
       </div>
     </div>
@@ -17,10 +17,10 @@
         <female-icon class="icon" />
       </div>
       <div class="data-container">
-        <div class="title">女性用户人数</div>
+        <div class="title">{{ t('femaleUsers') }}</div>
         <div class="content">
           <span class="number">{{ formatNumber(femaleCount) }}</span>
-          <span class="unit">万人</span>
+          <span class="unit">{{ t('userUnit') }}</span>
         </div>
       </div>
     </div>
@@ -31,6 +31,7 @@ import MaleIcon from '../Icon/Male.vue'
 import FemaleIcon from '../Icon/Female.vue'
 import { inject, computed } from 'vue'
 import { formatNumber } from '@/utils/index'
+import { useI18n } from 'vue-i18n'
 
 export default {
   components: {
@@ -38,6 +39,7 @@ export default {
     FemaleIcon,
   },
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
     const maleCount = computed(
       () =>
@@ -50,6 +52,7 @@ export default {
           .value
     )
     return {
+      t,
       maleCount,
       femaleCount,
       formatNumber,

@@ -69,6 +69,7 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
 
     .header {
       height: 167px;

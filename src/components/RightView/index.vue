@@ -3,17 +3,17 @@
     <div class="top">
       <top-header />
     </div>
-    <div class="subtop">
+    <!-- <div class="subtop">
       <transform-category :data="subTopItems" />
-    </div>
+    </div> -->
     <div class="main-content">
       <div class="main-left">
         <div class="main-item main-left-1">
           <order-map />
         </div>
-        <div class="main-item main-left-2">
+        <!-- <div class="main-item main-left-2">
           <transform-category :data="leftItems" :color="leftColors" />
-        </div>
+        </div> -->
         <div class="main-item main-left-3">
           <realtime-orders />
         </div>
@@ -70,6 +70,7 @@ export default {
   flex-direction: column;
   .top {
     height: 206px;
+    margin-bottom: 20px;
   }
 
   .subtop {
@@ -92,7 +93,8 @@ export default {
       flex-direction: column;
       justify-content: space-between;
       .main-left-1 {
-        height: 999px;
+        height: 1050px;
+        margin-bottom: 20px;
       }
 
       .main-left-2 {
@@ -100,11 +102,11 @@ export default {
       }
 
       .main-left-3 {
-        height: 350px;
+        height: 400px;
       }
 
       .main-left-4 {
-        height: 220px;
+        height: 280px;
       }
     }
 
@@ -113,8 +115,9 @@ export default {
       margin-left: 10px;
 
       .main-right-1 {
-        height: 999px;
+        height: 1050px;
         padding-right: 20px;
+        margin-bottom: 20px;
         box-sizing: border-box;
       }
 

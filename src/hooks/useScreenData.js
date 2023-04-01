@@ -44,8 +44,8 @@ const riderMockData = {
     '12月',
   ],
   orderData: {
-    legend1: '去年骑手月人均接单',
-    legend2: '今年骑手月人均接单',
+    legend1: 'previousAvgOrderByRider',
+    legend2: 'currentAvgOrderByRider',
     lastYearPersonUnit: [
       330, 420, 560, 450, 610, 890, 720, 610, 580, 750, 770, 600,
     ],
@@ -54,8 +54,8 @@ const riderMockData = {
     ],
   },
   rateData: {
-    legend1: '去年月新增骑手',
-    legend2: '今年月新增骑手',
+    legend1: 'previousNewRiders',
+    legend2: 'currentNewRiders',
     lastYearRiders: [
       129, 223, 202, 197, 300, 112, 333, 249, 178, 322, 410, 167,
     ],
@@ -165,27 +165,27 @@ const getDateData = () => {
 
 const mockShopData = [
   {
-    city: '北京',
+    city: 'beijing',
     shops: [
-      { shop: '必胜客', order: 1235, sales: 345613 },
-      { shop: '肯德基', order: 1378, sales: 126854 },
-      { shop: '麦当劳', order: 2102, sales: 369643 },
+      { shop: 'PizzaHut', order: 1235, sales: 345613 },
+      { shop: 'KFC', order: 1378, sales: 126854 },
+      { shop: 'Subway', order: 2102, sales: 369643 },
     ],
   },
   {
-    city: '上海',
+    city: 'shanghai',
     shops: [
-      { shop: '必胜客', order: 4532, sales: 578352 },
-      { shop: '肯德基', order: 1876, sales: 236864 },
-      { shop: '麦当劳', order: 3468, sales: 653415 },
+      { shop: 'PizzaHut', order: 4532, sales: 578352 },
+      { shop: 'KFC', order: 1876, sales: 236864 },
+      { shop: 'Subway', order: 3468, sales: 653415 },
     ],
   },
   {
-    city: '广州',
+    city: 'guangzhou',
     shops: [
-      { shop: '必胜客', order: 7425, sales: 235674 },
-      { shop: '肯德基', order: 8235, sales: 436788 },
-      { shop: '麦当劳', order: 1367, sales: 245677 },
+      { shop: 'PizzaHut', order: 7425, sales: 235674 },
+      { shop: 'KFC', order: 8235, sales: 436788 },
+      { shop: 'Subway', order: 1367, sales: 245677 },
     ],
   },
 ]

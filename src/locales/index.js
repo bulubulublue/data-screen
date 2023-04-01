@@ -66,12 +66,14 @@ const loadLocaleMessages = async (locale) => {
 }
 
 export const setI18nLanguage = async () => {
-  let locale = localStorage.getItem('currentlang')
+  let locale = localStorage.getItem('currLang')
+
   if (locale === 'zh-cn') {
     locale = 'en-us'
   } else {
     locale = 'zh-cn'
   }
+
   if (findLocaleLang(locale) === -1) {
     return
   }

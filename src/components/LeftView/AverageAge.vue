@@ -1,10 +1,10 @@
 <template>
   <div class="outer">
     <div class="header">
-      <span class="title"> 外卖用户年龄分布&平均年龄 </span>
+      <span class="title"> {{ t('ageDistribute') }} </span>
       <span class="age">
         <span class="age-number">29.33</span>
-        <span class="age-unit">岁</span>
+        <span class="age-unit">{{ t('ageUnit') }}</span>
       </span>
     </div>
     <div class="chart-container">
@@ -25,8 +25,10 @@
 <script>
 import { inject, ref } from 'vue'
 import { formatNumber } from '@/utils/index'
+import { useI18n } from 'vue-i18n'
 export default {
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     const screenData = inject('screen-data')
 
     const getOption = () => {
@@ -84,6 +86,7 @@ export default {
     }
 
     return {
+      t,
       ageRangeData: screenData.value.ageRangeData,
       getOption,
       formatNumber,

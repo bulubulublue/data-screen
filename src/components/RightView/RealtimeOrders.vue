@@ -2,9 +2,9 @@
   <flybox>
     <div class="outer">
       <div class="left">
-        <div class="title">实时订单趋势图</div>
+        <div class="title">{{ t('realtimeOrderTrend') }}</div>
         <div class="number">{{ formatNumber(realTimeOrder.totalOrders) }}</div>
-        <div class="subtitle">周同比增长率</div>
+        <div class="subtitle">{{ t('wowIncreaseRate') }}</div>
         <div class="rate-number">{{ realTimeOrder.weekGrowth }}</div>
       </div>
       <div class="right">
@@ -17,9 +17,11 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { formatNumber } from '@/utils/index'
 import SocketService from '@/utils/socket'
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
+    const { t } = useI18n({ useScope: 'global' })
     //   const screenData = inject('screen-data')
     //   const realTimeOrder = computed(() => screenData.value.realTimeOrder.value)
     const realTimeOrder = ref({})
@@ -83,6 +85,7 @@ export default {
     })
 
     return {
+      t,
       realTimeOrder,
       option,
       formatNumber,

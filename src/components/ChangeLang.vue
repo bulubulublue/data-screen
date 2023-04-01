@@ -28,11 +28,12 @@ export default {
   },
   setup() {
     const changeLang = async () => {
+      console.log('test')
       // store.commit('changeLang', command);
       await setI18nLanguage()
-      nextTick(() => {
-        window.location.reload()
-      })
+      // nextTick(() => {
+      //   window.location.reload()
+      // })
     }
 
     return {

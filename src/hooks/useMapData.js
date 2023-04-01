@@ -1,6 +1,7 @@
 import { counties } from '@/config/counties.js'
 import { geo } from '@/config/geoConfig.js'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const states = [
   '北京市',
@@ -42,9 +43,18 @@ const mockScatterData = states.map((item) => ({
 
 export default function () {
   const cities = ref(['北京', '上海', '广东', '四川', '浙江', '福建'])
+  const i18nCities = [
+    'beijing',
+    'shanghai',
+    'guangdong',
+    'sichuan',
+    'zhejiang',
+    'fujian',
+  ]
   const barChartOptions = ref([])
   const scatterData = ref([])
   const lineData = ref([])
+  const { t } = useI18n({ useScope: 'global' })
 
   const convertData = function (data) {
     const res = []
@@ -72,7 +82,7 @@ export default function () {
   scatterData.value = convertData(mockScatterData)
   lineData.value = convertLineData(states)
 
-  cities.value.forEach((i) => {
+  cities.value.forEach((i, index) => {
     const yAxis = counties[i]
     const data = yAxis
       .map(() => Math.floor(Math.random() * 1000))
@@ -81,17 +91,17 @@ export default function () {
       yAxis: {
         data: yAxis,
       },
-      title: [
-        {
-          text: `${i}销售数据`,
-          textStyle: {
-            color: '#fff',
-            fontSize: 36,
-          },
-          right: '12%',
-          top: 20,
-        },
-      ],
+      // title: [
+      //   {
+      //     text: `${t(i18nCities[index])}${t('salesData')}`,
+      //     textStyle: {
+      //       color: '#fff',
+      //       fontSize: 36,
+      //     },
+      //     right: '12%',
+      //     top: 20,
+      //   },
+      // ],
       series: [
         {
           type: 'effectScatter',

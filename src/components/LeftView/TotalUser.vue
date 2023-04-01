@@ -1,71 +1,92 @@
 <template>
   <div class="outer">
-    <div class="title">外卖用户总数</div>
+    <div class="title">{{ t('totalUsers') }}</div>
     <div class="total-count">
-      <count-to :startVal="preUser"
-                :endVal="todayUser"
-                :duration="1000"></count-to>
+      <count-to
+        :startVal="preUser"
+        :endVal="todayUser"
+        :duration="1000"
+      ></count-to>
     </div>
     <div class="comparison">
-      <span class="day-growth">每日增长率:
-        <count-to :startVal="prevGrowthLastDay"
-                  :endVal="growthLastDay"
-                  :duration="1000"
-                  :decimals="2"
-                  suffix="%">
+      <span class="day-growth"
+        >{{ t('dayIncreaseRate') }}:
+        <count-to
+          :startVal="prevGrowthLastDay"
+          :endVal="growthLastDay"
+          :duration="1000"
+          :decimals="2"
+          suffix="%"
+        >
         </count-to>
       </span>
-      <span class="month-growth">每月增长率:
-        <count-to :startVal="prevGrowthLastMonth"
-                  :endVal="growthLastMonth"
-                  :duration="1000"
-                  :decimals="2"
-                  suffix="%">
+      <span class="month-growth"
+        >{{ t('monthlyIncreaseRate') }}:
+        <count-to
+          :startVal="prevGrowthLastMonth"
+          :endVal="growthLastMonth"
+          :duration="1000"
+          :decimals="2"
+          suffix="%"
+        >
         </count-to>
       </span>
     </div>
     <div class="progress">
       <div class="progress-inner-wrapper">
-
-        <div class="progress-inner"
-             :style="{width:`${growthLastDay}%`}"></div>
+        <div
+          class="progress-inner"
+          :style="{ width: `${growthLastDay}%` }"
+        ></div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export default {
   props: {
     todayUser: Number,
     growthLastDay: Number,
-    growthLastMonth: Number
+    growthLastMonth: Number,
   },
-  setup (props) {
+  setup(props) {
+    const { t } = useI18n({ useScope: 'global' })
     const preUser = ref(0)
     const prevGrowthLastDay = ref(0)
     const prevGrowthLastMonth = ref(0)
 
-    watch(() => props.todayUser, (_, prev) => {
-      preUser.value = prev
-    })
+    watch(
+      () => props.todayUser,
+      (_, prev) => {
+        preUser.value = prev
+      }
+    )
 
-    watch(() => props.growthLastDay, (_, prev) => {
-      console.log(prev)
-      prevGrowthLastDay.value = prev
-    })
+    watch(
+      () => props.growthLastDay,
+      (_, prev) => {
+        console.log(prev)
+        prevGrowthLastDay.value = prev
+      }
+    )
 
-    watch(() => props.growthLastMonth, (_, prev) => {
-      prevGrowthLastMonth.value = prev
-    })
+    watch(
+      () => props.growthLastMonth,
+      (_, prev) => {
+        prevGrowthLastMonth.value = prev
+      }
+    )
 
     return {
+      t,
       preUser,
       prevGrowthLastDay,
-      prevGrowthLastMonth
+      prevGrowthLastMonth,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
