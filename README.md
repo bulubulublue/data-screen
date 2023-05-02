@@ -1,7 +1,18 @@
-# Vue 3 + Vite
+# overview
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A dashboard of overview of delivery data. The main features including Sales Revenue Chart, Customer Distribution Map,
+Delivery Performance Metrics, daily Order Data Table etc
 
-## Recommended IDE Setup
+Framework: Vuejs including vue-router and pinia
+Mock data: vite-plugin-mock
+UI library: element plus, echarts
+Internationalization: i18n
+Communication with server: axios, Websocket
+Others: svg animation
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# start of the project
+
+- link to the comonent library
+  npm link rollup-datav-libs
+
+- start websocket server
